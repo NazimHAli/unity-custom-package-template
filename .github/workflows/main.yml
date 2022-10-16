@@ -10,7 +10,6 @@ jobs:
       fail-fast: false
       matrix:
         testMode:
-          - playmode
           - editmode
     steps:
       - uses: actions/checkout@v2
@@ -21,6 +20,7 @@ jobs:
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
+          projectPath: tests
           unityVersion: 2021.3.11f1
           testMode: ${{ matrix.testMode }}
           artifactsPath: ${{ matrix.testMode }}-artifacts
